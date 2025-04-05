@@ -23,9 +23,11 @@ Well... now you don’t have to! This app takes in a job description and gives y
 ---
 
 ## 📸 UI Preview
+<img width="1440" alt="Screenshot 2025-04-05 at 2 36 40 PM" src="https://github.com/user-attachments/assets/e9dff703-dbe9-4f7e-bd72-c1da45212ff7" />
+<img width="1436" alt="Screenshot 2025-04-05 at 2 36 58 PM" src="https://github.com/user-attachments/assets/2c5aab33-34d2-4160-94cf-1cff1ec796ab" />
+<img width="1422" alt="Screenshot 2025-04-05 at 2 37 08 PM" src="https://github.com/user-attachments/assets/6a51a409-4a46-4de5-80fd-3c99b3567621" />
 
-> You can add a screenshot here later:
-> `![UI Screenshot](https://your-screenshot-url.com)`
+
 
 ---
 
