@@ -1,4 +1,4 @@
-# 🧠 SHL Assessment Recommender
+# SHL Assessment Recommender
 
 Hey there! 👋  
 Ever looked at a job description and wondered what kind of SHL assessment would fit best?  
