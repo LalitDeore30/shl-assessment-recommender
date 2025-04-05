@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SHL Assessment Recommender</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 2rem;
+        background: #f9f9ff;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+      }
+
+      form {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      textarea {
+        width: 100%;
+        height: 200px;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        resize: vertical;
+        margin-top: 0.5rem;
+      }
+
+      button {
+        margin-top: 1rem;
+        padding: 0.75rem 1.5rem;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .section {
+        max-width: 800px;
+        margin: 2rem auto;
+      }
+
+      .section h2 {
+        color: #2c3e50;
+      }
+
+      .card {
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-left: 5px solid #007bff;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .card h3 {
+        margin-top: 0;
+        color: #007bff;
+      }
+
+      .card p {
+        margin: 0.3rem 0;
+      }
+
+      .card a {
+        display: inline-block;
+        margin-top: 0.5rem;
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .card a:hover {
+        text-decoration: underline;
+      }
+
+      ul {
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin-bottom: 0.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SHL Assessment Recommender</h1>
+    <form method="POST" action="/recommend">
+      <label for="jd">Paste Job Description:</label><br />
+      <textarea name="jd" id="jd" required></textarea><br />
+      <button type="submit">Get Recommendation</button>
+    </form>
+
+    {% if extracted_role or extracted_skills %}
+    <div class="section">
+      <h2>Extracted Role:</h2>
+      <p>{{ extracted_role }}</p>
+
+      <h2>Extracted Skills:</h2>
+      <ul>
+        {% for skill in extracted_skills %}
+        <li>{{ skill }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %} {% if recommendations %}
+    <div class="section">
+      <h2>Recommended SHL Assessments:</h2>
+      {% for test in recommendations %}
+      <div class="card">
+        <h3>{{ test.name }}</h3>
+        <p><strong>Type:</strong> {{ test.test_type }}</p>
+        <p><strong>Duration:</strong> {{ test.duration }}</p>
+        <p>
+          <strong>Remote Support:</strong> {{ "Yes" if test.remote_support else
+          "No" }}
+        </p>
+        <p><strong>Adaptive:</strong> {{ "Yes" if test.adaptive else "No" }}</p>
+        <p><strong>Roles:</strong> {{ test.roles | join(", ") }}</p>
+        <p><strong>Skills:</strong> {{ test.skills | join(", ") }}</p>
+        <p><strong>Description:</strong> {{ test.description }}</p>
+        <a href="{{ test.url }}" target="_blank">View Assessment</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </body>
+</html>
