@@ -1,7 +1,7 @@
 import requests
 
 
-GEMINI_API_KEY = "AIzaSyC4v4nuc7f9P9H8Xu7udJWdbuW0uJ1lxzE"
+GEMINI_API_KEY = ""
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={GEMINI_API_KEY}"
 def parse_jd(query):
     try:
